@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Advancing Stroke Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-logo">
+                <centre>
+                    <h1 class="title">Advancing Stroke Prediction: Harnessing the Power of Generative AI and Skin Disease Markers in MRI-CT Fusion</h1>
+                </centre>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <section class="image-section" id="skin-section">
+            <h2 class="section-title">Skin Disease Classifier</h2>
+            <form method="POST" action="/" enctype="multipart/form-data" class="upload-form">
+                <input type="file" name="skin_image" accept=".jpg, .jpeg, .png" class="file-input">
+                <button type="submit" class="submit-button">Classify Skin Disease</button>
+            </form>
+            {% if skin_classification_done %}
+            <div class="result-box">
+                <p class="result-label">Predicted Skin Disease:</p>
+                <p class="result-text">{{ predicted_label }}</p>
+            </div>
+            {% endif %}
+        </section>
+        <section class="image-section" id="ct-mri-section">
+            <h2 class="section-title">CT-Scan Image Generator</h2>
+            <form method="POST" action="/" enctype="multipart/form-data" class="upload-form">
+                <input type="file" name="mri_image" accept=".jpg, .jpeg, .png" class="file-input">
+                <button type="submit" class="submit-button">Generate CT Image</button>
+            </form>
+            {% if ct_image %}
+            <div class="result-box">
+                <h3 class="result-label">Generated CT Image</h3>
+                <div class="image-container">
+                    <img src="{{ url_for('static', filename=ct_image) }}" alt="Generated CT Image" class="generated-image">
+                </div>
+                <div class="prediction-details">
+                    <div class="prediction-item">
+                        <p class="prediction-label">Predicted CT/MRI Class:</p>
+                        <p class="prediction-text">{{ ct_mri_predicted_label }}</p>
+                    </div>
+                    {% if ct_mri_predicted_label == "CT" %}
+                    <div class="prediction-item">
+                        <p class="prediction-label">Stroke Classification:</p>
+                        <p class="prediction-text">{{ stroke_class }}</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endif %}
+        </section>
+    </main>
+    <footer class="footer">
+        <p class="footer-text">&copy; 2023 Advancing Stroke Prediction: Harnessing the Power of Generative AI and Skin Disease Markers in MRI-CT Fusion</p>
+    </footer>
+</body>
+</html>
+
+
