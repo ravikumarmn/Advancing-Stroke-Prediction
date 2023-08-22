@@ -1,7 +1,7 @@
 # Advancing Stroke Prediction: Harnessing the Power of Generative AI and Skin Disease Markers in MRI-CT Fusion
 
 
-<img class="image-align-left" src="real_img.png"/><img class="image-align-left" src="fake_img.png"/>
+<img class="image-align-left" src="assets/real_img.png"/><img class="image-align-left" src="assets/fake_img.png"/>
 
 
 CT/MRI Classifier: Train Loss: 0.0254, Val Loss: 0.0275, Train 
